@@ -87,7 +87,45 @@
             height: auto;
         }
     }
-</style>
+</style /* Final message animation */
+.final-message {
+  margin-top: 40px;
+  font-style: italic;
+  opacity: 0;
+  animation: fadeUp 3s ease forwards;
+  animation-delay: 2s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 18px;
+  animation: floatUp 8s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}>
 </head>
 <body>
 <div class="container">
@@ -123,5 +161,27 @@
 
     <footer>Made with ❤️ just for you</footer>
 </div>
-</body>
+</body><div class="final-message">
+  <p>
+    Prince Oluwaseun Elijah, Ọnà-Àrà, Oládìmẹ́jì, Adéníyì, Oláìtàn, Ọmọ Adébáyọ̀ 🤍
+  </p>
+  <p>
+    Ìfẹ́ mi ń tọ́ ọ lọ ní gbogbo ibi tí o bá wà.  
+    Èmi wà níbí. Mo máa wà níbí. Títí ayérayé.
+  </p>
+</div>
+
+<script>
+  const hearts = ["🤍","❤️","💗"];
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 8000);
+  }, 700);
+</script>
 </html>
